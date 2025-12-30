@@ -1,20 +1,20 @@
-# Omnicart Pipeline
+Omnicart Pipeline
 
 A data pipeline for analyzing seller performance in e-commerce systems.
 
-## Features
+Features
 
 - Fetches product and user data from e-commerce APIs
 - Enriches data with computed metrics
 ````markdown
-# Omnicart Pipeline
+ Omnicart Pipeline
 
 A small, focused data pipeline and CLI for enriching and analyzing e-commerce product and seller data.
 
 This project ingests product and user data, enriches product rows with user (seller) information,
 computes per-item revenue metrics, and produces reports useful for seller performance analysis.
 
-## Installation
+Installation
 
 Install the published package from PyPI:
 
@@ -50,7 +50,7 @@ omnicart-pipeline --help
 Notes for Windows PowerShell users: invoke the command the same way; if you installed the package into a virtual environment,
 activate it first.
 
-### Python API (programmatic)
+Python API (programmatic)
 
 You can also run the pipeline from Python:
 
@@ -61,7 +61,7 @@ pipeline = Pipeline(config_path="pipeline.cfg")
 pipeline.run(output_file="report.json")
 ```
 
-## Configuration (.cfg files)
+Configuration (.cfg files)
 
 The pipeline accepts a configuration file in standard INI format (extension `.cfg` or `.ini`). A minimal example:
 
@@ -90,7 +90,7 @@ How this project packages and loads `.cfg` files (the package-data challenge):
 
 - This approach meets package distribution constraints (config shipped as package data) and runtime constraints (works when installed as wheel or editable install).
 
-## Example: reading a config in code
+Example: reading a config in code
 
 ```python
 import configparser
@@ -105,18 +105,3 @@ else:
             config.read_file(fh)
 ```
 
-## What I changed / solution summary
-
-- Provide a single CLI entrypoint `omnicart-pipeline` for easy user runs.
-- Include packaged configuration files and use `importlib.resources` for reliable access.
-- Accept a user-supplied config path to override defaults at runtime.
-
-## Troubleshooting & notes
-
-- If `omnicart-pipeline` is not found after installation, ensure your Python `scripts`/`bin` directory is on PATH, or activate the virtualenv where it was installed.
-- To include additional config templates in packaging, add them to `package_data` in `pyproject.toml` or `setup.cfg` and update `MANIFEST.in` for source distributions.
-
-## License
-
-MIT
-````
